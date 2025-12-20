@@ -22,5 +22,8 @@ if [ ! -f /var/www/wordpress/wp-config.php ]; then
     wp redis enable --allow-root
 fi
 
+mkdir -p /var/www/wordpress/wp-content/uploads
+chmod -R 777 /var/www/wordpress/wp-content/uploads
+
 echo "Starting PHP-FPM..."
 exec php-fpm83 -F

@@ -5,6 +5,7 @@ RUN apk update && apk add --no-cache \
     php83-dom php83-exif php83-fileinfo php83-mbstring \
     php83-openssl php83-xml php83-zip php83-phar \
     php83-tokenizer \
+    php83-gd \
     wget mariadb-client
 
 RUN sed -i 's/memory_limit = 128M/memory_limit = 512M/g' /etc/php83/php.ini
