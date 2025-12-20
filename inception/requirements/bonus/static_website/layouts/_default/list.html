@@ -1,0 +1,22 @@
+{{ define "main" }}
+    <article>
+        <h1>{{ .Title }}</h1>
+        <div class="content">
+            {{ .Content }}
+        </div>
+    </article>
+
+    {{ if .Pages }}
+    <hr style="border: 0; border-top: 1px solid #3e3e42; margin: 40px 0;">
+    <h2>Pages in this section</h2>
+    <ul style="line-height: 2;">
+        {{ range .Pages }}
+        <li>
+            <a href="{{ .RelPermalink }}" style="font-weight: bold;">{{ .Title }}</a>
+            <br>
+            <span style="color: #888; font-size: 0.9em;">{{ .Summary }}</span>
+        </li>
+        {{ end }}
+    </ul>
+    {{ end }}
+{{ end }}

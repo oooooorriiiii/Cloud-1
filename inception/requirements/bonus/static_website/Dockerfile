@@ -1,18 +1,16 @@
 FROM alpine:latest
 
-RUN apk update && apk add --no-cache go
+RUN apk update && apk add --no-cache hugo go git
 
 WORKDIR /app
+COPY . .
 
-# Goの簡易サーバーコードを作成
-RUN echo 'package main; import ("net/http"; "fmt"); func main() { http.Handle("/", http.FileServer(http.Dir("./public"))); fmt.Println("Listening on :1313"); http.ListenAndServe(":1313", nil) }' > main.go
+RUN hugo --destination public
 
-# 静的HTML作成
-RUN mkdir public && \
-    echo '<html><body><h1>Welcome to My Static Site</h1><p>Powered by Go</p></body></html>' > public/index.html
-
-# ビルド
 RUN go build -o server main.go
+
+RUN adduser -D staticuser
+USER staticuser
 
 EXPOSE 1313
 

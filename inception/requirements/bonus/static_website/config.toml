@@ -1,0 +1,4 @@
+baseURL = 'https://ymori.42.fr/static'
+languageCode = 'ja'
+title = 'Inception Wiki'
+# theme = ''

@@ -1,0 +1,18 @@
+{{ define "main" }}
+    <article>
+        <header style="margin-bottom: 30px;">
+            <h1 style="margin-bottom: 5px;">{{ .Title }}</h1>
+            <div style="color: #888; font-size: 0.9rem;">
+                Last Updated: {{ .Date.Format "2006-01-02" }}
+            </div>
+        </header>
+
+        <div class="content">
+            {{ .Content }}
+        </div>
+    </article>
+
+    <div style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #3e3e42;">
+        <a href="{{ .Site.BaseURL }}">← Back to Home</a>
+    </div>
+{{ end }}
