@@ -34,10 +34,54 @@ services:
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
+      MYSQL_EMAIL: ${MYSQL_EMAIL}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       DOMAIN_NAME: ${DOMAIN_NAME}
+      WP_ADMIN_USER: ${WP_ADMIN_USER}
+      WP_ADMIN_PASSWORD: ${WP_ADMIN_PASSWORD}
+      WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL}
+      FTP_USER: ${FTP_USER}
+      FTP_PASSWORD: ${FTP_PASSWORD}
     volumes:
       - wordpress_vol:/var/www/wordpress
+    networks:
+      - inception
+    restart: always
+
+  # === Bonus Services ===
+  redis:
+    build: requirements/bonus/redis
+    image: redis-custom
+    networks:
+      - inception
+    restart: always
+
+  ftp:
+    build: requirements/bonus/ftp
+    image: ftp-custom
+    container_name: ftp
+    ports:
+      - "21:21"
+      - "21100-21110:21100-21110"
+    environment:
+      FTP_USER: ${FTP_USER}
+      FTP_PASSWORD: ${FTP_PASSWORD}
+    volumes:
+      - wordpress_vol:/var/www/wordpress
+    networks:
+      - inception
+    restart: always
+
+  adminer:
+    build: requirements/bonus/adminer
+    image: adminer-custom
+    networks:
+      - inception
+    restart: always
+
+  static_website:
+    build: requirements/bonus/static_website
+    image: static-custom
     networks:
       - inception
     restart: always
