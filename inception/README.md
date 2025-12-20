@@ -83,13 +83,13 @@ FTP で画像をアップロードし、WordPress にインポートすること
 ftp -p localhost 21
 # User/Pass は .env 参照
 ftp> cd wp-content/uploads
-ftp> put test_image.jpg
+ftp> put test.jpg
 ftp> bye
 ```
 2. WordPress へのインポート:
 
 ```bash
-docker compose exec wordpress wp media import /var/www/wordpress/wp-content/uploads/test_image.jpg --allow-root
+docker compose exec wordpress wp media import /var/www/wordpress/wp-content/uploads/test.jpg --allow-root
 ```
 
 3. 確認: WordPress 管理画面の「メディア」に画像が追加されていること。
