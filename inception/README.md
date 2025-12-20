@@ -99,9 +99,9 @@ docker compose exec wordpress wp media import /var/www/wordpress/wp-content/uplo
 
 - URL: `https://login.42.fr/adminer`
 - Login:
-  - System: MySQL
-  - Server: mariadb (重要: localhost ではない)
-  - User/Pass: .env の一般ユーザー情報
+  - System: `MySQL`
+  - Server: `mariadb` (重要: `localhost` ではない)
+  - User/Pass: `.env` の一般ユーザー情報
 - 確認: ログインでき、テーブル一覧が表示されること。
 
 ### 5. Static Website (Golang)
