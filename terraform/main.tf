@@ -78,3 +78,13 @@ resource "google_compute_instance" "vm_instance" {
   # for Ansible
   metadata_startup_script = "sudo apt-get update && sudo apt-get install -y python3"
 }
+
+# Ansible Inventory
+resource "local_file" "ansible_inventory" {
+  content = templatefile("${path.module}/inventory.tpl", {
+    ip_address = google_compute_address.static_ip.address
+    ssh_user   = var.ssh_user
+    ssh_key    = var.ssh_pub_key_path
+  })
+  filename = "../ansible/inventory.ini"
+}

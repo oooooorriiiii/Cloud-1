@@ -44,5 +44,6 @@ terraform.rc
 # planout
 
 .env
+*.ini
 
 data/
