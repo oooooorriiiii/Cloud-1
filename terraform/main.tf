@@ -70,7 +70,7 @@ resource "google_compute_instance" "vm_instance" {
   }
 
   metadata = {
-    ssh-key = "${var.ssh_user}:${file(var.ssh_pub_key_path)}"
+    ssh-keys = "${var.ssh_user}:${file(var.ssh_pub_key_path)}"
   }
 
   tags = ["http-server", "https-server", "inception-server"]
