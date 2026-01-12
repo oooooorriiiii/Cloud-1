@@ -1,13 +1,13 @@
 NAME = inception
-DOCKER_COMPOSE = docker compose -f ./inception/docker-compose.yml
-DATA_PATH = ./inception/data
+DOCKER_COMPOSE = docker compose -f ./docker-compose.yml
+DATA_PATH = ./data
 
 all: up
 
 up:
 	@mkdir -p $(DATA_PATH)/wordpress
 	@mkdir -p $(DATA_PATH)/mariadb
-	$(DOCKER_COMPOSE) up --build
+	$(DOCKER_COMPOSE) up -d --build
 
 down:
 	$(DOCKER_COMPOSE) down
